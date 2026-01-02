@@ -20,125 +20,32 @@ const __dirname = path.dirname(__filename);
 
 // --- PATTERN DATABASE ĐẦY ĐỦ ---
 const PATTERN_DATABASE = {
-    // Cầu cơ bản (đơn giản)
-    '1-1': ['tx', 'xt'],  // thay đổi sang chữ thường
+    '1-1': ['tx', 'xt'],
     'bệt': ['tt', 'xx'],
     '2-2': ['ttxx', 'xxtt'],
     '3-3': ['tttxxx', 'xxxttt'],
     '4-4': ['ttttxxxx', 'xxxxtttt'],
     '5-5': ['tttttxxxxx', 'xxxxxttttt'],
-    
-    // Cầu phức tạp nâng cao
+
     '1-2-1': ['txxxt', 'xtttx'],
     '2-1-2': ['ttxtt', 'xxtxx'],
     '1-2-3': ['txxttt', 'xttxxx'],
     '3-2-3': ['tttxttt', 'xxxtxxx'],
     '4-2-4': ['ttttxxtttt', 'xxxxttxxxx'],
-    '3-1-3': ['tttxttt', 'xxxtxxx'],
     '1-3-1': ['txtttx', 'xtxxxt'],
     '2-3-2': ['ttxxtt', 'xxttxx'],
-    '3-4-3': ['tttxxxxttt', 'xxxttttxxx'],
-    '4-3-4': ['ttttxxxtttt', 'xxxxtttxxxx'],
-    
-    // Cầu hỗn hợp phức tạp
-    '1-2-1-2': ['txxxtx', 'xtttxt'],
-    '2-1-2-1': ['ttxttx', 'xxtxxt'],
-    '1-1-2-2': ['txttxx', 'xtxxxt'],
-    '2-2-1-1': ['ttxxtx', 'xxttxx'],
-    '3-2-1': ['tttxtx', 'xxxtxt'],
-    '1-2-2-1': ['txxxttx', 'xtttxxt'],
-    
-    // Cầu đặc biệt
+
     'zigzag': ['txt', 'xtx'],
     'double_zigzag': ['txtxt', 'xtxtx'],
     'triple_zigzag': ['txtxtxt', 'xtxtxtx'],
-    'quad_alternate': ['txtxtxtx', 'xtxtxtxt'],
-    'penta_alternate': ['txtxtxtxtx', 'xtxtxtxtxt'],
-    
-    // Cầu chu kỳ dài
-    '1-1-1-2': ['txttx', 'xtxxt'],
-    '2-1-1-1': ['ttxtx', 'xxtxt'],
-    '1-2-2-2': ['txxxtt', 'xtttxx'],
-    '2-2-2-1': ['ttxxttx', 'xxttxx'],
-    '3-3-2': ['tttxxxtt', 'xxxttxx'],
-    '2-3-3': ['ttxxttt', 'xxttxxx'],
-    
-    // Cầu Fibonacci
-    'fibonacci_1': ['t', 'x'],  // 1
-    'fibonacci_2': ['tx', 'xt'],  // 1,1
-    'fibonacci_3': ['txt', 'xtx'],  // 1,1,2
-    'fibonacci_4': ['txttx', 'xtxxt'],  // 1,1,2,3
-    'fibonacci_5': ['txttxttx', 'xtxtxxxt'],  // 1,1,2,3,5
-    
-    // Cầu hình học
-    'triangle': ['txx', 'xtt'],
-    'square': ['ttxx', 'xxtt'],
-    'pentagon': ['tttxx', 'xxxtt'],
-    'hexagon': ['ttttxx', 'xxxxxt'],
-    
-    // Cầu sóng
-    'wave_2': ['ttxx', 'xxtt'],
-    'wave_3': ['tttxxx', 'xxxttt'],
-    'wave_4': ['ttttxxxx', 'xxxxtttt'],
-    'wave_5': ['tttttxxxxx', 'xxxxxttttt'],
-    
-    // Cầu đảo chiều
-    'reverse_1': ['ttx', 'xxt'],
-    'reverse_2': ['ttxx', 'xxtt'],
-    'reverse_3': ['tttxxx', 'xxxttt'],
-    'reverse_4': ['ttttxxxx', 'xxxxtttt'],
-    
-    // Cầu giao thoa
-    'interlace_1': ['txtxt', 'xtxtx'],
-    'interlace_2': ['ttxxtt', 'xxttxx'],
-    'interlace_3': ['tttxxttt', 'xxxxtxxx'],
-    
-    // Cầu phân nhánh
-    'branch_1': ['ttxtx', 'xxtxt'],
-    'branch_2': ['ttxxttx', 'xxttxx'],
-    'branch_3': ['tttxxtttx', 'xxxxtxxxt'],
-    
-    // Cầu xoắn ốc
-    'spiral_1': ['txxxt', 'xtttx'],
-    'spiral_2': ['ttxxxtt', 'xxtttxx'],
-    'spiral_3': ['tttxxxxttt', 'xxxttttxxx'],
-    
-    // Cầu cấp số cộng
-    'arithmetic_1': ['tx', 'xt'],
-    'arithmetic_2': ['txx', 'xtt'],
-    'arithmetic_3': ['txxx', 'xttt'],
-    'arithmetic_4': ['txxxx', 'xtttt'],
-    
-    // Cầu cấp số nhân
-    'geometric_1': ['tx', 'xt'],
-    'geometric_2': ['txx', 'xtt'],
-    'geometric_3': ['txxx', 'xttt'],
-    'geometric_4': ['txxxx', 'xtttt'],
-    
-    // Cầu hỗn hợp đa dạng
-    'mixed_1': ['ttxtxx', 'xxtxtt'],
-    'mixed_2': ['txxxttx', 'xtttxxt'],
-    'mixed_3': ['tttxxtxx', 'xxxxttxx'],
-    'mixed_4': ['txttxtxt', 'xtxtxtxt'],
-    'mixed_5': ['ttxxtxtt', 'xxtxtxxt'],
-    
-    // Cầu đối xứng
-    'symmetry_1': ['txt', 'xtx'],
-    'symmetry_2': ['ttxxtt', 'xxttxx'],
-    'symmetry_3': ['tttxxxttt', 'xxxxttxxx'],
-    'symmetry_4': ['ttttxxxxtttt', 'xxxxxtttxxxx'],
-    
-    // Cầu lặp lại
-    'repeat_1': ['tt', 'xx'],
-    'repeat_2': ['tttt', 'xxxx'],
-    'repeat_3': ['tttttt', 'xxxxxx'],
-    'repeat_4': ['tttttttt', 'xxxxxxxx'],
-    
-    // Cầu xen kẽ
+
+    'fibonacci_3': ['txt', 'xtx'],
+    'fibonacci_4': ['txttx', 'xtxxt'],
+    'fibonacci_5': ['txttxttx', 'xtxtxxxt'],
+
     'alternate_1': ['txtx', 'xtxt'],
     'alternate_2': ['txtxtx', 'xtxtxt'],
-    'alternate_3': ['txtxtxtx', 'xtxtxtxt'],
-    'alternate_4': ['txtxtxtxtx', 'xtxtxtxtxt'],
+    'alternate_3': ['txtxtxtx', 'xtxtxtxt']
 };
 
 // --- UTILITIES ---
